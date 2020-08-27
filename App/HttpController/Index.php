@@ -12,6 +12,7 @@ namespace App\HttpController;
 
 use EasySwoole\Http\AbstractInterface\Controller;
 use EasySwoole\EasySwoole\Config;
+use EasySwoole\EasySwoole\Status;
 
 class Index extends Controller
 {
