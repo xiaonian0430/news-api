@@ -24,7 +24,8 @@ class Update extends Controller
         $data = [
             "isUpdate"=>true,
             "iOS"=>'https://apps.apple.com/cn/app/id1477308637',
-            "Android"=>'https://etsapp.51huishen.com/appdown/v2.0.apk'
+            "Android"=>'https://etsapp.51huishen.com/appdown/v2.0.apk',
+            "note"=>'优化性能'
         ];
         $result = [
             'data' => $data
