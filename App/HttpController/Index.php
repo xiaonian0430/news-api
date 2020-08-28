@@ -10,11 +10,11 @@
  */
 namespace App\HttpController;
 
-use EasySwoole\Http\AbstractInterface\Controller;
+use App\HttpController\Basic;
 use EasySwoole\EasySwoole\Config;
 use EasySwoole\Http\Message\Status;
 
-class Index extends Controller
+class Index extends Basic
 {
     /**
     * 获取数据
