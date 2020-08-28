@@ -17,5 +17,6 @@ class Basic extends Controller
     public function __construct()
     {
         $this->response()->withHeader('Server', 'InfobirdCloud');
+        return 1;
     }
 }
