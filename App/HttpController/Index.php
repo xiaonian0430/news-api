@@ -150,6 +150,10 @@ class Index extends Controller
             'data' => $data
         ];
         $this->response()->withHeader('Server', 'InfobirdCloud');
+        $this->response()->write(json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+        $this->response()->withHeader('Content-type', 'application/json;charset=utf-8');
+        $this->response()->withStatus(Status::CODE_OK);
+        return true;
         $this->writeJson(Status::CODE_OK, $result, 'ok');
     }
 }
