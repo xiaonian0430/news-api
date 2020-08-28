@@ -8,57 +8,81 @@
 
 # 相关软件
 
-- centos 7
+- centos 7 或更高版本
+- gcc 4.8 或更高版本
+- make
+- autoconf
 - openssl
-- php 7.2 以上版本
-- swoole 4.4.16
-- 使用 Composer 作为依赖管理工具
+- php 7.2 或更高版本
+- swoole 4.5.2 或更高版本
+- 使用 Composer 作为 php 依赖管理工具
 
 
 # 安装
 
-1）yum install openssl-devel
+1）安装 openssl libxml2 sqlite nghttp2
+```
+# openssl libxml2 sqlite
+yum install openssl-devel libxml2 libxml2-devel sqlite-devel
+
+# nghttp2 library
+wget https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz
+tar zxvf nghttp2-1.41.0.tar.gz
+cd nghttp2-1.41.0
+./configure
+make && make install
+```
 
 
-2）例如：php 7.2 安装 如下
+3) 安装 php
+```
+wget https://www.php.net/distributions/php-7.4.9.tar.gz
+tar zxvf php-7.4.9.tar.gz
+cd php-7.4.9
+./configure --prefix /usr/local/php749 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd
+make && make install
 
-yum install -y epel-release
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum -y remove php*
-yum -y install php72w-cli php72w-fpm php72w-common php72w-mbstring php72w-devel
-
-3）例如 swoole 安装如下
-### swoole 扩展
-wget https://github.com/swoole/swoole-src/archive/v4.5.2.tar.gz -O swoole.tar.gz \
-    && mkdir -p swoole \
-    && tar -xf swoole.tar.gz -C swoole --strip-components=1 \
-    && rm swoole.tar.gz \
-    && ( \
-    cd swoole \
-    && phpize \
-    && ./configure --enable-openssl \
-    && make \
-    && make install \
-    ) \
-    && sed -i "2i extension=swoole.so" /etc/php.ini \
-    && rm -r swoole
-
-4） composer 安装
- 
- 中文官网 ： https://www.phpcomposer.com/
+# 添加软连接
+ln -s /user/local/php749/bin/php /bin/php
+ln -s /user/local/php749/bin/phpize /bin/phpize
+```
 
 
+4）安装 swoole 扩展
+```
+wget https://github.com/swoole/swoole-src/archive/v4.5.2.tar.gz
+tar zxvf v4.5.2.tar.gz
+cd v4.5.2
+phpize
+./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php749/bin/php-config
+make && make install
 
-5） 项目依赖安装 
+# 进入php.ini,在最后面增加上extension=swoole.so
+vi /usr/local/php749/lib/php.ini
+extension=swoole.so
+```
 
-composer install
 
+5）下载项目代码
 
-php vendor/easyswoole/easyswoole/bin/easyswoole install  选择默认参数
+```
+# 5.1）克隆代码
+git clone https://github.com/xiaonian0430/news-api.git
+cd news-api
+
+# 5.2）安装 composer php 依赖管理工具。见中文官网 ： https://www.phpcomposer.com/
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+# 5.3）安装项目依赖
+php composer.phar install
+php vendor/easyswoole/easyswoole/bin/easyswoole install  # (一路回车即可，选择默认参数)
+```
 
 
 # 启动服务
-
+```
 bin/start.sh
 
 
@@ -71,3 +95,4 @@ php easyswoole stop produce
 php easyswoole reload produce
 
 php easyswoole restart produce
+```

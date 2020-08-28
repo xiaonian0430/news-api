@@ -6,7 +6,7 @@
  */
 
 return [
-    'SERVER_NAME'    => "EasySwoole",
+    'SERVER_NAME'    => "NewsApi",
     'MAIN_SERVER'    => [
         'LISTEN_ADDRESS' => '0.0.0.0',
         'PORT'           => 57501,
