@@ -126,7 +126,7 @@ class Index extends Basic
         $result = [
             'data' => $data
         ];
-        $this->writeJson(Status::CODE_OK, $result, 'ok');
+        $this->writeJsonU(Status::CODE_OK, $result, 'ok');
     }
 
     public function detail()
@@ -149,6 +149,6 @@ class Index extends Basic
         $result = [
             'data' => $data
         ];
-        $this->writeJson(Status::CODE_OK, $result, 'ok');
+        $this->writeJsonU(Status::CODE_OK, $result, 'ok');
     }
 }
