@@ -14,9 +14,9 @@ use EasySwoole\Http\AbstractInterface\Controller;
 
 class Basic extends Controller
 {
-    public function __construct()
+    public function writeJson($code, $content, $msg)
     {
         $this->response()->withHeader('Server', 'InfobirdCloud');
-        return 1;
+        $this->writeJson($code, $content, $msg);
     }
 }
