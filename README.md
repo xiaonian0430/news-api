@@ -20,10 +20,13 @@
 
 # 安装
 
+0)安装编译工具
+yum -y install gcc-c++ make autoconf wget 
+
 1）安装 openssl libxml2 sqlite nghttp2
 ```
 # openssl libxml2 sqlite
-yum -y install wget openssl-devel libxml2 libxml2-devel sqlite-devel
+yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel
 
 # nghttp2 library
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz
