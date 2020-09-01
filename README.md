@@ -65,21 +65,25 @@ vi /usr/local/php749/lib/php.ini
 extension=swoole.so
 ```
 
+5）安装 composer php 依赖管理工具。见中文官网 ： https://www.phpcomposer.com/
+```
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+```
 
-5）部署项目代码
+
+6）部署项目代码
 
 ```
 # 5.1）克隆代码
 git clone https://github.com/xiaonian0430/news-api.git
 cd news-api
 
-# 5.2）安装 composer php 依赖管理工具。见中文官网 ： https://www.phpcomposer.com/
-php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-
-# 5.3）安装项目依赖
-php composer.phar install
+# 5.2）安装项目依赖
+composer install
 php vendor/easyswoole/easyswoole/bin/easyswoole install  # (一路回车即可，选择默认参数)
 ```
 
