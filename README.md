@@ -78,11 +78,11 @@ chmod +x /usr/local/bin/composer
 6）部署项目代码
 
 ```
-# 5.1）克隆代码
+# 6.1）克隆代码
 git clone https://github.com/xiaonian0430/news-api.git
 cd news-api
 
-# 5.2）安装项目依赖
+# 6.2）安装项目依赖
 composer install
 php vendor/easyswoole/easyswoole/bin/easyswoole install  # (一路回车即可，选择默认参数)
 ```
