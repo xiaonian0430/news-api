@@ -1,12 +1,12 @@
 <?php
 /**
- * @author=> Xiao Nian
- * @contact=> xiaonian030@163.com
+ * @author: Xiao Nian
+ * @contact: xiaonian030@163.com
 
- * @version=> 1.0
- * @license=> Apache Licence
- * @file=> Index.php
- * @time=> 2019-12-01 14=>00
+ * @version: 2.1.1
+ * @license: Apache Licence
+ * @file: Index.php
+ * @datetime: 2019-12-01 14:00
  */
 namespace App\HttpController;
 

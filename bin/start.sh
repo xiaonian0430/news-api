@@ -3,7 +3,7 @@ echo $#
 echo $2
 echo $1
 
-# 守护进程启动服务
+# 启动服务
 if [ "$1"  = "start" ]
 then
     php easyswoole start produce

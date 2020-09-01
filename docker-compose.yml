@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  news_api_server:
+    image: xioanian/php:7.4.9
+    restart: always
+    container_name: news_api_container
+    ports:
+      - 57501:9501
+    command:
+      - /bin/bash 
+      - -c
+      - |
+        composer install
+        php vendor/easyswoole/easyswoole/bin/easyswoole install
+        php easyswoole start produce
+    volumes:
+      - ./:/usr/src/myapp:rw

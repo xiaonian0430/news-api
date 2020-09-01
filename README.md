@@ -14,14 +14,18 @@
 - autoconf
 - openssl
 - php 7.2 或更高版本
-- swoole 4.5.2 或更高版本
+- swoole 4.5.0 或更高版本
 - 使用 Composer 作为 php 依赖管理工具
 
 
 # 安装
 
-0)安装编译工具
-yum -y install gcc-c++ make autoconf wget 
+0) 系统通用工具安装
+```
+yum -y install gcc-c++ make autoconf wget
+
+yum -y install wget zip unzip git
+```
 
 1）安装 openssl libxml2 sqlite nghttp2
 ```
@@ -53,16 +57,13 @@ ln -s /usr/local/php749/bin/phpize /bin/phpize
 
 4）安装 swoole 扩展
 ```
-wget https://github.com/swoole/swoole-src/archive/v4.5.2.tar.gz
-tar zxvf v4.5.2.tar.gz
-cd v4.5.2
+wget https://github.com/swoole/swoole-src/archive/v4.5.3.tar.gz
+tar zxvf v4.5.3.tar.gz
+cd v4.5.3
 phpize
 ./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php749/bin/php-config
 make && make install
-
-# 进入php.ini,在最后面增加上extension=swoole.so
-vi /usr/local/php749/lib/php.ini
-extension=swoole.so
+echo "extension=swoole.so" >> /usr/local/php749/lib/php.ini
 ```
 
 5）安装 composer php 依赖管理工具。见中文官网 ： https://www.phpcomposer.com/
@@ -95,7 +96,9 @@ bin/start.sh
 
 如下命令已经在 shell 脚本中写好
 
-php easyswoole start produce  d
+php easyswoole start produce
+
+# 守护进程方式启动： php easyswoole start produce  d
 
 php easyswoole stop produce
 
