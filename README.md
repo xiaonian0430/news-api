@@ -23,7 +23,7 @@
 1）安装 openssl libxml2 sqlite nghttp2
 ```
 # openssl libxml2 sqlite
-yum install openssl-devel libxml2 libxml2-devel sqlite-devel
+yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel
 
 # nghttp2 library
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz
@@ -43,8 +43,8 @@ cd php-7.4.9
 make && make install
 
 # 添加软连接
-ln -s /user/local/php749/bin/php /bin/php
-ln -s /user/local/php749/bin/phpize /bin/phpize
+ln -s /usr/local/php749/bin/php /bin/php
+ln -s /usr/local/php749/bin/phpize /bin/phpize
 ```
 
 
@@ -63,7 +63,7 @@ extension=swoole.so
 ```
 
 
-5）下载项目代码
+5）部署项目代码
 
 ```
 # 5.1）克隆代码
